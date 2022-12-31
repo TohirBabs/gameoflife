@@ -11,7 +11,7 @@ export const GameboyLayout = ({
   boxSize,
 }) => {
   const [playing, setplaying] = useState(true);
-  const [cleared, setcleared] = useState(false);
+  const [cleared, setcleared] = useState(true);
 
   return (
     <div className="case">
