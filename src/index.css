@@ -1,26 +1,42 @@
 body {
-  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png) 
+  background-color: #c3d3a3;
+  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png);
 }
-  
+* {
+  box-sizing: border-box;
+}
+
 .box {
-  display: inline-block;       
-  border: 1px solid black;
+  display: inline-block;
+  border: #474243 1px solid;
+
   width: 15px;
   height: 15px;
   margin-left: -1px;
   margin-bottom: -1px;
-  }
+}
 
 .off {
-  background-color: lightgray;
+  background-color: #c5d1a3;
 }
 
 .on {
-  background-color: green;
+  position: relative;
+  background-color: #6b7353;
 }
-  
-.box:hover { 
-  background: #00CCFF;
+
+.on::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  border: #474243 2px solid;
+}
+
+.box:hover {
+  background-color: #7f8863;
 }
 
 .center {
@@ -33,11 +49,12 @@ body {
   width: 150px;
   line-height: 0;
   margin: auto;
-  box-shadow: 0px 0px 20px white;
-  margin-top: 20px;
 }
-  
-h1, h2, h3, h4 {
+
+h1,
+h2,
+h3,
+h4 {
   color: white;
   margin: auto;
   text-align: center;
@@ -47,4 +64,147 @@ h1, h2, h3, h4 {
 
 h4 {
   margin-top: 0px;
+}
+
+.case {
+  width: 95vw;
+  max-width: 450px;
+  height: 95vh;
+  margin: auto;
+  display: flex;
+
+  flex-direction: column;
+}
+.case-head {
+  width: 100%;
+  height: 3.1rem;
+  border: #474243 5px solid;
+  border-bottom: none;
+  background-color: #8c976d;
+
+  border-radius: 1rem 1rem 0 0;
+}
+
+.case-head > div {
+  height: 100%;
+  width: 80%;
+  margin: auto;
+
+  border-right: #474243 3px solid;
+  border-left: #474243 3px solid;
+}
+
+.case-body {
+  position: relative;
+  top: -7px;
+  border: #474243 5px solid;
+  border-top-width: 3px;
+  flex: 1;
+  background-color: #8c976d;
+
+  border-radius: 7px 7px 6rem 1rem;
+}
+
+.case-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.8rem;
+  border: #474243 3px solid;
+  background-color: #6e7353;
+  border-radius: 4px 4px 3rem 0.4rem;
+
+  height: 50%;
+  max-height: 52vh;
+}
+
+.screen {
+  width: 90%;
+  border: #474243 3px solid;
+  background-color: #c5d1a3;
+  border-radius: 4px;
+  height: 85%;
+  overflow: hidden;
+}
+
+.buttons {
+  margin: 3rem 2rem;
+
+  position: relative;
+}
+
+.vary-buttons {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  border: #474243 3px solid;
+  background-color: rgba(43, 43, 43, 0.2);
+}
+
+.vary-buttons div {
+  background-color: #4e534e;
+  width: max-content;
+  border: #474243 2px solid;
+  border-radius: 3px;
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.vary-buttons button {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background-color: inherit;
+}
+
+.size-buttons {
+  transform: translate(-50%, -50%);
+}
+
+.speed-buttons {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.switch-buttons {
+  position: absolute;
+  display: flex;
+  gap: 1rem;
+  right: 0;
+  top: 2rem;
+  padding: 4px;
+  transform: rotate(-30deg);
+  border-radius: 3rem;
+  border: #474243 3px solid;
+  background-color: rgba(43, 43, 43, 0.2);
+}
+
+.switch-buttons button {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: #474243 2px solid;
+  background-color: #d44841;
+}
+
+.dull-buttons {
+  position: absolute;
+  bottom: -3rem;
+  left: 25%;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dull-buttons button {
+  transform: rotate(-30deg);
+
+  width: 3rem;
+  height: 10px;
+  border-radius: 1rem;
+  background-color: #4e534e;
+
+  border: #474243 2px solid;
 }

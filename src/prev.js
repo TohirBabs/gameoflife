@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ButtonToolbar, Dropdown, DropdownButton } from "react-bootstrap";
+import { ButtonToolbar, MenuItem, DropdownButton } from "react-bootstrap";
 import "./index.css";
-import { GameboyLayout } from "./Components/GameboyLayout";
 
 function arrayClone(arr) {
   return JSON.parse(JSON.stringify(arr));
@@ -19,15 +18,13 @@ class Box extends React.Component {
         className={this.props.boxClass}
         id={this.props.id}
         onClick={this.selectBox}
-        style={{ width: this.props.boxSize, height: this.props.boxSize }}
       />
     );
   }
 }
 
-const Grid = (props) => {
+const Grid = props => {
   const width = props.cols * 14;
-
   let boxClass = "";
   const rowsArr = props.gridFull.map((rowArr, rowIdx) =>
     rowArr.map((item, colIdx) => {
@@ -42,7 +39,6 @@ const Grid = (props) => {
           row={rowIdx}
           col={colIdx}
           selectBox={props.selectBox}
-          boxSize={props.boxSize}
         />
       );
     })
@@ -56,7 +52,7 @@ const Grid = (props) => {
 };
 
 class Buttons extends React.Component {
-  handleSelect = (eventKey) => {
+  handleSelect = eventKey => {
     this.props.gridSize(eventKey);
   };
 
@@ -87,9 +83,9 @@ class Buttons extends React.Component {
             id="size-menu"
             onSelect={this.handleSelect}
           >
-            <Dropdown.Item eventKey="1">20x10</Dropdown.Item>
-            <Dropdown.Item eventKey="2">50x30</Dropdown.Item>
-            <Dropdown.Item eventKey="3">70x50</Dropdown.Item>
+            <MenuItem eventKey="1">20x10</MenuItem>
+            <MenuItem eventKey="2">50x30</MenuItem>
+            <MenuItem eventKey="3">70x50</MenuItem>
           </DropdownButton>
         </ButtonToolbar>
       </div>
@@ -101,18 +97,16 @@ class Main extends React.Component {
   constructor() {
     super();
     this.speed = 100;
-    this.rows = 50;
+    this.rows = 30;
     this.cols = 50;
-    this.box = "15px";
 
     this.state = {
       generation: 0,
       gridFull: Array(this.rows)
         .fill()
-        .map(() => Array(this.cols).fill(false)),
+        .map(() => Array(this.cols).fill(false))
     };
   }
-  boxSize = 3;
 
   componentDidMount() {
     this.seed();
@@ -121,15 +115,15 @@ class Main extends React.Component {
 
   selectBox = (row, col) => {
     const gridFull = this.state.gridFull.map((rowArr, rowIdx) =>
-      rowArr.map((item, colIdx) =>
-        rowIdx === row && colIdx === col ? !item : item
+      rowArr.map(
+        (item, colIdx) => (rowIdx === row && colIdx === col ? !item : item)
       )
     );
     this.setState(() => ({ gridFull }));
   };
 
   seed = () => {
-    const gridFull = this.state.gridFull.map((rowArr) =>
+    const gridFull = this.state.gridFull.map(rowArr =>
       rowArr.map(() => Math.floor(Math.random() * 4) === 1)
     );
     this.setState(() => ({ gridFull }));
@@ -161,57 +155,23 @@ class Main extends React.Component {
 
     this.setState(() => ({
       gridFull,
-      generation: 0,
+      generation: 0
     }));
   };
 
-  // gridSize = (size) => {
-  //   switch (size) {
-  //     case "1":
-  //       this.cols = 20;
-  //       this.rows = 10;
-  //       break;
-  //     case "2":
-  //       this.cols = 50;
-  //       this.rows = 30;
-  //       break;
-  //     default:
-  //       this.cols = 70;
-  //       this.rows = 50;
-  //   }
-  //   this.clear();
-  // };
-  gridSize = (size) => {
+  gridSize = size => {
     switch (size) {
       case "1":
-        this.cols = 10;
+        this.cols = 20;
         this.rows = 10;
         break;
       case "2":
-        this.cols = 10;
-        this.rows = 10;
+        this.cols = 50;
+        this.rows = 30;
         break;
       default:
-        this.cols = 10;
-        this.rows = 10;
-    }
-    this.clear();
-  };
-  boxSize = (size) => {
-    switch (size) {
-      case 1:
-        this.box = "10px";
-        break;
-      case 2:
-        this.box = "15px";
-
-        break;
-      case 3:
-        this.box = "20px";
-
-        break;
-      default:
-        this.box = "15px";
+        this.cols = 70;
+        this.rows = 50;
     }
     this.clear();
   };
@@ -235,50 +195,33 @@ class Main extends React.Component {
         if (!g[i][j] && count === 3) g2[i][j] = true;
       }
     }
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       gridFull: g2,
-      generation: prevState.generation + 1,
+      generation: prevState.generation + 1
     }));
   };
 
   render() {
     return (
-      // <div>
-      //   <h1>The Game of Life</h1>
-      //   <Buttons
-      // playButton={this.playButton}
-      // pauseButton={this.pauseButton}
-      // slow={this.slow}
-      // fast={this.fast}
-      // clear={this.clear}
-      // seed={this.seed}
-      // gridSize={this.gridSize}
-      //   />
-      // <Grid
-      //   gridFull={this.state.gridFull}
-      //   rows={this.rows}
-      //   cols={this.cols}
-      //   selectBox={this.selectBox}
-      // />
-      //   <h2>Generations: {this.state.generation}</h2>
-      // </div>
-      <GameboyLayout
-        playButton={this.playButton}
-        pauseButton={this.pauseButton}
-        slow={this.slow}
-        fast={this.fast}
-        clear={this.clear}
-        seed={this.seed}
-        boxSize={this.boxSize}
-      >
+      <div>
+        <h1>The Game of Life</h1>
+        <Buttons
+          playButton={this.playButton}
+          pauseButton={this.pauseButton}
+          slow={this.slow}
+          fast={this.fast}
+          clear={this.clear}
+          seed={this.seed}
+          gridSize={this.gridSize}
+        />
         <Grid
           gridFull={this.state.gridFull}
           rows={this.rows}
           cols={this.cols}
           selectBox={this.selectBox}
-          boxSize={this.box}
         />
-      </GameboyLayout>
+        <h2>Generations: {this.state.generation}</h2>
+      </div>
     );
   }
 }
