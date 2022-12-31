@@ -131,7 +131,7 @@ h4 {
 }
 
 .buttons {
-  margin: 3rem 2rem;
+  margin: 4rem 3rem;
 
   position: relative;
 }
@@ -177,7 +177,7 @@ h4 {
   display: flex;
   gap: 1rem;
   right: 0;
-  top: 2rem;
+  top: 3rem;
   padding: 6px;
   transform: rotate(-30deg);
   border-radius: 3rem;
@@ -195,7 +195,7 @@ h4 {
 
 .dull-buttons {
   position: absolute;
-  bottom: -3rem;
+  bottom: -4rem;
   left: 25%;
   display: flex;
   gap: 0.5rem;
@@ -204,7 +204,7 @@ h4 {
 .dull-buttons button {
   transform: rotate(-30deg);
 
-  width: 3rem;
+  width: 5rem;
   height: 10px;
   border-radius: 1rem;
   background-color: #4e534e;
