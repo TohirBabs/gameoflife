@@ -67,10 +67,13 @@ h4 {
 }
 
 .case {
+  margin: auto;
+  margin-top: 2rem;
   width: 95vw;
   max-width: 450px;
-  height: 95vh;
-  margin: auto;
+  height: 90vh;
+  max-height: 180vw;
+
   display: flex;
 
   flex-direction: column;
@@ -135,8 +138,8 @@ h4 {
 
 .vary-buttons {
   position: relative;
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
   border: #474243 3px solid;
   background-color: rgba(43, 43, 43, 0.2);
@@ -155,8 +158,8 @@ h4 {
 }
 
 .vary-buttons button {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border: none;
   background-color: inherit;
 }
@@ -175,7 +178,7 @@ h4 {
   gap: 1rem;
   right: 0;
   top: 2rem;
-  padding: 4px;
+  padding: 6px;
   transform: rotate(-30deg);
   border-radius: 3rem;
   border: #474243 3px solid;
@@ -183,8 +186,8 @@ h4 {
 }
 
 .switch-buttons button {
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: #474243 2px solid;
   background-color: #d44841;
